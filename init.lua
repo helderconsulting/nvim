@@ -1,2 +1,3 @@
 require("helder")
-print("hello")
+
+vim.lsp.enable("lua_ls")
