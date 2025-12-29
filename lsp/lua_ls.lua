@@ -15,6 +15,15 @@ return {
 			diagnostics = {
 				globals = { "vim" },
 			},
+			telemetry = {
+				enable = false,
+			},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME,
+				},
+			},
 		},
 	},
 }

@@ -1,7 +1,7 @@
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", vim.diagnostic.get_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.get_next)
 vim.keymap.set("n", "K", vim.lsp.buf.hover)
 
 vim.keymap.set("v", "<Up>", ":m '<-2<CR>gv=gv")
