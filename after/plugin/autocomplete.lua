@@ -1,39 +1,39 @@
-local cmp = require("cmp")
-
-cmp.setup({
-	window = {
-		-- completion = cmp.config.window.bordered(),
-		-- documentation = cmp.config.window.bordered(),
+require("blink.cmp").setup({
+	completion = {
+		list = {
+			selection = { preselect = false, auto_insert = true },
+			max_items = 10,
+		},
+		documentation = { auto_show = true },
+		menu = {
+			scrollbar = false,
+			draw = {
+				gap = 2,
+				columns = {
+					{ "kind_icon", "kind", gap = 1 },
+					{ "label", "label_description", gap = 1 },
+				},
+			},
+		},
 	},
-	mapping = cmp.mapping.preset.insert({
-		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-	}),
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-	}, {
-		{ name = "buffer" },
-	}),
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
-		{ name = "buffer" },
-	},
-})
+		default = function()
+			local sources = { "lsp", "buffer" }
+			local ok, node = pcall(vim.treesitter.get_node)
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-	matching = { disallow_symbol_nonprefix_matching = false },
+			if ok and node then
+				if not vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type()) then
+					table.insert(sources, "path")
+				end
+				if node:type() ~= "string" then
+					table.insert(sources, "snippets")
+				end
+			end
+
+			return sources
+		end,
+		per_filetype = {
+			codecompanion = { "codecompanion", "buffer" },
+		},
+	},
 })

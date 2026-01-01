@@ -5,4 +5,6 @@ if dap_ok and nio_ok then
 	require("dapui").setup()
 end
 
-vim.keymap.set("n", "<leade>tb", dap.toggle_breakpoint)
+vim.keymap.set("n", "<leader>tb", dap.toggle_breakpoint, {
+	desc = "[t]oggle [b]reakpoint",
+})

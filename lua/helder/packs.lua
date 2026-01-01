@@ -1,0 +1,15 @@
+vim.pack.add({
+	"https://github.com/Saghen/blink.cmp",
+	"https://github.com/folke/which-key.nvim",
+	"https://github.com/mfussenegger/nvim-dap",
+	"https://github.com/rcarriga/nvim-dap-ui",
+	"https://github.com/nvim-neotest/nvim-nio",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/folke/tokyonight.nvim",
+	"https://github.com/nvim-lualine/lualine.nvim",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/mbbill/undotree",
+})

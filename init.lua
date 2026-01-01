@@ -1,3 +1,2 @@
+vim.g.projects_dir = vim.env.HOME .. "/Code"
 require("helder")
-vim.lsp.enable("typescript_ls")
-vim.lsp.enable("lua_ls")

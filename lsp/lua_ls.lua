@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
 	cmd = { "lua-language-server" },
 	filetypes = { "lua" },
@@ -22,6 +23,7 @@ return {
 				checkThirdParty = false,
 				library = {
 					vim.env.VIMRUNTIME,
+					"${3rd}/luv/library",
 				},
 			},
 		},
