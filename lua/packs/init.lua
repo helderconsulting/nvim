@@ -1,5 +1,14 @@
 require("packs.theme")
 
+local on_save_group = vim.api.nvim_create_augroup("OpenPluginOnSave", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = on_save_group,
+	pattern = "*",
+	once = true,
+	callback = function()
+		require("packs.git")
+	end,
+})
 local file_group = vim.api.nvim_create_augroup("OnFileOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = file_group,
