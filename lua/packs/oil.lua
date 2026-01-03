@@ -1,3 +1,7 @@
+vim.pack.add({
+	"https://github.com/stevearc/oil.nvim",
+})
+
 require("oil").setup({
 	default_file_explorer = true,
 	view_options = {
@@ -8,5 +12,4 @@ require("oil").setup({
 		end,
 	},
 })
-
 vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })

@@ -6,15 +6,16 @@ return {
 		".luarc.json",
 		".luarc.jsonc",
 		".stylua.toml",
-		".git",
 	},
 	settings = {
 		Lua = {
 			runtime = {
 				version = "LuaJIT",
 			},
-			diagnostics = {
-				globals = { "vim" },
+			format = { enable = false },
+			hint = {
+				enable = true,
+				arrayIndex = "Disable",
 			},
 			telemetry = {
 				enable = false,
