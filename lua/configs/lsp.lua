@@ -15,10 +15,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end
 		end
 
-		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, { desc = "code actions" })
-		vim.keymap.set("n", "<leader>n", vim.lsp.buf.rename, { desc = "rename symbol" })
 		vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "go to definition" })
-		vim.keymap.set("n", "<leader>I", vim.lsp.buf.hover, { desc = "open information about the symbol under cursor" })
 	end,
 })
 
