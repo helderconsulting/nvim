@@ -23,6 +23,12 @@ vim.opt.termguicolors = true
 
 vim.opt.wildignore:append({ ".DS_Store" })
 vim.o.completeopt = "menuone,noselect,noinsert"
+vim.diagnostic.config({
+	signs = false,
+	virtual_text = false,
+	underline = true,
+	float = true,
+})
 
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0

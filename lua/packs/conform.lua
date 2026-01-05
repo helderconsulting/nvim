@@ -12,3 +12,5 @@ require("conform").setup({
 		lsp_format = "fallback",
 	},
 })
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
