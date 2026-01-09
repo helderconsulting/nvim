@@ -1,8 +1,18 @@
 vim.pack.add({
 	"https://github.com/stevearc/oil.nvim",
 })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "oil",
+	callback = function()
+		vim.opt_local.number = false -- Hide line numbers
+		vim.opt_local.relativenumber = false
+		vim.opt_local.signcolumn = "no" -- Hide git/error signs
+		vim.opt_local.foldcolumn = "0" -- Hide fold markers
+	end,
+})
 
-require("oil").setup({
+local explorer = require("oil")
+explorer.setup({
 	default_file_explorer = true,
 	view_options = {
 		show_hidden = true,
@@ -11,5 +21,13 @@ require("oil").setup({
 			return m ~= nil
 		end,
 	},
+	keymaps = {
+		["<CR>"] = function()
+			explorer.select({ preview = false, close = true })
+		end,
+	},
 })
-vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+vim.keymap.set("n", "-", function()
+	vim.cmd("vsplit")
+	require("oil").open()
+end, { desc = "Open parent directory" })

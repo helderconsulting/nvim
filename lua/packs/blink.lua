@@ -17,3 +17,12 @@ require("blink.cmp").setup({
 	},
 	fuzzy = { implementation = "prefer_rust_with_warning" },
 })
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "blink.cmp" and (kind == "install" or kind == "update") then
+			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
+		end
+	end,
+})

@@ -1,7 +1,6 @@
 require("packs.theme")
-
-require("packs.refactoring")
-local on_save_group = vim.api.nvim_create_augroup("OpenPluginOnSave", { clear = true })
+-- require("packs.dev")
+local on_save_group = vim.api.nvim_create_augroup("OnSave", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = on_save_group,
 	pattern = "*",
@@ -11,7 +10,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 	end,
 })
 
-local on_open_group = vim.api.nvim_create_augroup("OnFile", { clear = true })
+local on_open_group = vim.api.nvim_create_augroup("OnOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	group = on_open_group,
 	callback = function()
@@ -20,7 +19,7 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	end,
 })
 
-local after_open_group = vim.api.nvim_create_augroup("AfterFileOpen", { clear = true })
+local after_open_group = vim.api.nvim_create_augroup("AfterOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = after_open_group,
 	once = true,
@@ -28,6 +27,8 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 		require("packs.treesitter")
 		require("packs.undotree")
 		require("packs.conform")
+		require("packs.refactoring")
+		require("packs.db")
 	end,
 })
 
