@@ -1,40 +1,45 @@
 vim.pack.add({ "https://github.com/helderconsulting/action-menu.nvim" })
+local ok, tokyonight = pcall(require, "tokyonight.colors")
 
-require("action_menu.nvim").setup({
-	commands = {
-		{
-			key = "i",
-			label = "show info",
-			action = vim.lsp.buf.hover,
+if ok then
+	local colors = tokyonight.setup()
+	local action_menu = require("action_menu")
+	action_menu.setup({
+		commands = {
+			{
+				key = "i",
+				label = "show info",
+				action = vim.lsp.buf.hover,
+			},
+			{
+				key = "d",
+				label = "show diagnostics",
+				action = vim.diagnostic.open_float,
+			},
+			{
+				key = "r",
+				label = "rename...",
+				action = vim.lsp.buf.rename,
+			},
+			{
+				key = "a",
+				label = "code actions",
+				action = vim.lsp.buf.code_action,
+			},
 		},
-		{
-			key = "d",
-			label = "show diagnostics",
-			action = vim.diagnostic.open_float,
+		colors = {
+			key = {
+				fg = colors.fg,
+				bg = colors.bg_dark,
+			},
+			label = {
+				fg = colors.bg_dark,
+				bg = colors.hint,
+			},
 		},
-		{
-			key = "r",
-			label = "rename",
-			action = vim.lsp.buf.rename,
-		},
-		{
-			key = "a",
-			label = "code actions",
-			action = vim.lsp.buf.code_action,
-		},
-	},
-	keymaps = {
-		open_menu = {
-			mode = { "n", "v" },
-			lhs = "<C-space>",
-		},
-		close_menu = {
-			mode = "n",
-			lhs = "<Esc>",
-		},
-		select_item = {
-			mode = "n",
-			lhs = "<cr>",
-		},
-	},
-}
+	})
+
+	vim.keymap.set({ "n", "v" }, "<C-space>", action_menu.open)
+	vim.keymap.set("n", "<Esc>", action_menu.close)
+	vim.keymap.set("n", "<cr>", action_menu.select)
+end

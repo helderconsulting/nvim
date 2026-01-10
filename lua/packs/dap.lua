@@ -1,17 +1,14 @@
 vim.pack.add({
 	"https://github.com/mfussenegger/nvim-dap",
-	"https://github.com/rcarriga/nvim-dap-ui",
-	"https://github.com/nvim-neotest/nvim-nio",
-	"https://github.com/mxsdev/nvim-dap-vscode-js",
+	"https://github.com/igorlfs/nvim-dap-view",
 	"https://github.com/jbyuki/one-small-step-for-vimkind",
 })
 
 local dap_ok, dap = pcall(require, "dap")
 local utils = require("dap.utils")
-local nio_ok, _ = pcall(require, "nio")
-local dapui_ok, dapui = pcall(require, "dapui")
+local dapui_ok, dapui = pcall(require, "dap-view")
 dap.set_log_level("TRACE")
-if dap_ok and nio_ok and dapui_ok then
+if dap_ok and dapui_ok then
 	dapui.setup()
 	dap.listeners.before.attach.dapui_config = function()
 		dapui.open()
@@ -113,7 +110,6 @@ keymap("n", "<F12>", dap.step_out, opts)
 
 if dapui_ok then
 	keymap("n", "<leader>du", dapui.toggle, opts)
-	keymap("n", "<leader>de", dapui.eval, opts)
 end
 vim.keymap.set("n", "<leader>b", function()
 	dap.toggle_breakpoint()

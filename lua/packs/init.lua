@@ -1,5 +1,4 @@
 require("packs.theme")
--- require("packs.dev")
 local on_save_group = vim.api.nvim_create_augroup("OnSave", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = on_save_group,
@@ -16,6 +15,7 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	callback = function()
 		require("packs.lint")
 		require("packs.indentation")
+		require("packs.actions")
 	end,
 })
 
