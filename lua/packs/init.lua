@@ -1,5 +1,4 @@
 require("packs.theme")
-require("packs.git")
 
 local on_open_group = vim.api.nvim_create_augroup("OnOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
@@ -21,6 +20,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 		require("packs.conform")
 		require("packs.refactoring")
 		require("packs.db")
+		require("packs.git")
 	end,
 })
 

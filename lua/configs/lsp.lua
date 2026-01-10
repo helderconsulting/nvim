@@ -14,11 +14,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				})
 			end
 		end
-
-		vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "go to definition" })
 	end,
 })
 
+vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "go to definition" })
 vim.lsp.enable({
 	"lua_ls",
 	"rust_ls",

@@ -18,7 +18,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.updatetime = 50
-
+vim.opt.timeoutlen = 50
 vim.opt.termguicolors = true
 
 vim.opt.wildignore:append({ ".DS_Store" })

@@ -11,8 +11,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-local explorer = require("oil")
-explorer.setup({
+local oil = require("oil")
+oil.setup({
 	default_file_explorer = true,
 	view_options = {
 		show_hidden = true,
@@ -23,7 +23,7 @@ explorer.setup({
 	},
 	keymaps = {
 		["<CR>"] = function()
-			explorer.select({ preview = false, close = true })
+			oil.select({ preview = false, close = true })
 		end,
 	},
 })

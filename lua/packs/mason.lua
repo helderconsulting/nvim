@@ -3,11 +3,23 @@ vim.pack.add({
 })
 require("mason").setup({
 	ui = {
+		border = "none",
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",
 			package_uninstalled = "✗",
 		},
+	},
+	ensure_installed = {
+		"vtsls",
+		"lua_ls",
+		"lua-language-server",
+		"rust_analyzer",
+		"js-debug-adapter",
+		"eslint_d",
+		"selene",
+		"prettier",
+		"stylua",
 	},
 })
 

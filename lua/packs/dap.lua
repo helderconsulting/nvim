@@ -108,12 +108,7 @@ keymap("n", "<F10>", dap.step_over, opts)
 keymap("n", "<F11>", dap.step_into, opts)
 keymap("n", "<F12>", dap.step_out, opts)
 
-if dapui_ok then
-	keymap("n", "<leader>du", dapui.toggle, opts)
-end
-vim.keymap.set("n", "<leader>b", function()
-	dap.toggle_breakpoint()
-end, {
+vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, {
 	desc = "toggle breakpoint",
 })
 
