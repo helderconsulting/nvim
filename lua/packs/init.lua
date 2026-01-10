@@ -1,13 +1,5 @@
 require("packs.theme")
-local on_save_group = vim.api.nvim_create_augroup("OnSave", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = on_save_group,
-	pattern = "*",
-	once = true,
-	callback = function()
-		require("packs.git")
-	end,
-})
+require("packs.git")
 
 local on_open_group = vim.api.nvim_create_augroup("OnOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
@@ -15,7 +7,6 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	callback = function()
 		require("packs.lint")
 		require("packs.indentation")
-		require("packs.actions")
 	end,
 })
 
@@ -24,6 +15,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = after_open_group,
 	once = true,
 	callback = function()
+		require("packs.actions")
 		require("packs.treesitter")
 		require("packs.undotree")
 		require("packs.conform")
