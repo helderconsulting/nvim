@@ -16,7 +16,23 @@ vim.api.nvim_create_autocmd("PackChanged", {
 		end
 	end,
 })
-
+local ts = require("nvim-treesitter")
+-- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+ts.install({
+	"lua",
+	"luadoc",
+	"javascript",
+	"comment",
+	"query",
+	"vim",
+	"vimdoc",
+	"bash",
+	"typescript",
+	"json",
+	"rust",
+	"dockerfile",
+	"editorconfig",
+})
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "<filetype>" },
 	callback = function()

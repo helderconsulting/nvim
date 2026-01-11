@@ -3,10 +3,10 @@ require("packs.theme")
 local on_open_group = vim.api.nvim_create_augroup("OnOpen", { clear = true })
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	group = on_open_group,
+	once = true,
 	callback = function()
-		require("packs.treesitter")
 		require("packs.lint")
-		require("packs.indentation")
+		-- require("packs.indentation")
 	end,
 })
 
@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	group = after_open_group,
 	once = true,
 	callback = function()
+		require("packs.treesitter")
 		require("packs.actions")
 		require("packs.undotree")
 		require("packs.conform")
