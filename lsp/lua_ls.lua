@@ -13,6 +13,7 @@ return {
 				version = "LuaJIT",
 			},
 			format = { enable = false },
+			codeLens = { enable = true },
 			hint = {
 				enable = true,
 				arrayIndex = "Disable",

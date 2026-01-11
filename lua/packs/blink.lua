@@ -1,10 +1,11 @@
 vim.pack.add({
 	"https://github.com/Saghen/blink.cmp",
 })
+
 require("blink.cmp").setup({
 	keymap = { preset = "super-tab" },
 	appearance = {
-		use_nvim_cmp_as_default = true,
+		use_nvim_cmp_as_default = false,
 	},
 	completion = {
 		documentation = { auto_show = false },

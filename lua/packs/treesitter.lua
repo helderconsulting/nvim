@@ -17,20 +17,12 @@ vim.api.nvim_create_autocmd("PackChanged", {
 	end,
 })
 
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "*" },
+	pattern = { "<filetype>" },
 	callback = function()
-		local filetype = vim.bo.filetype
-		if filetype and filetype ~= "" then
-			local success = pcall(function()
-				vim.treesitter.start()
-			end)
-			if not success then
-				return
-			end
-		end
+		vim.treesitter.start()
+		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo[0][0].foldmethod = "expr"
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 	end,
 })
