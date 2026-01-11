@@ -6,7 +6,6 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		require("packs.lint")
-		-- require("packs.indentation")
 	end,
 })
 
