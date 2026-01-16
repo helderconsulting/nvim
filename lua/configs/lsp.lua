@@ -21,4 +21,5 @@ vim.lsp.enable({
 	"lua_ls",
 	"rust_ls",
 	"typescript_ls",
+	"eslint_ls",
 })

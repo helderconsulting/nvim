@@ -10,6 +10,6 @@ neogit.setup({
 	},
 })
 vim.keymap.set("n", "<leader>gp", function()
-	neogit.open({ kind = "split" })
+	neogit.open()
 end, { desc = "open git panel" })
 vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<cr>", { desc = "open git diff" })
