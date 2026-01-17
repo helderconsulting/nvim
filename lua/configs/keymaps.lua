@@ -4,7 +4,10 @@ vim.keymap.set({ "n" }, "<C-space>d", vim.diagnostic.open_float, { desc = "show 
 vim.keymap.set({ "n" }, "<C-space>r", vim.lsp.buf.rename, { desc = "rename variable" })
 vim.keymap.set({ "n" }, "<C-space>a", vim.lsp.buf.code_action, { desc = "show code actions" })
 vim.keymap.set("n", "<leader>q", ":q<cr>")
-vim.keymap.set("n", "<leader>r", ":update<cr> :source<cr>")
+vim.keymap.set("n", "<leader>W", ":wa<cr>", { desc = "save all" })
+vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "save file" })
+
+vim.keymap.set("n", "<leader>r", ":OverseerRun<cr>", { desc = "run task" })
 vim.keymap.set("n", "<A-(>", ":bp<cr>")
 vim.keymap.set("n", "<A-)>", ":bn<cr>")
 vim.keymap.set("n", "<A-d>", ":bd<cr>")

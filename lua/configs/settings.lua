@@ -11,6 +11,10 @@ vim.o.winborder = "rounded"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.title = true
+vim.opt.inccommand = "split"
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 

@@ -22,7 +22,6 @@ require("mason").setup({
 		"stylua",
 	},
 })
-
 vim.keymap.set("n", "<leader>l", function()
 	require("mason.ui").open()
-end, { desc = "Open language tools" })
+end, { desc = "Open language toolS" })
