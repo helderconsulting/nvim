@@ -1,7 +1,7 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "eslint-lsp", "--stdio" },
-	filetypes = { "javascript", "typescript" },
+	cmd = { "vscode-eslint-language-server", "--stdio" },
+	filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
 	root_markers = {
 		".eslintrc",
 		".eslintrc.js",
@@ -18,8 +18,7 @@ return {
 	},
 	settings = {
 		validate = "on",
-		---@diagnostic disable-next-line: assign-type-mismatch
-		packageManager = nil,
+		packageManager = "npm",
 		useESLintClass = false,
 		experimental = {
 			useFlatConfig = false,
@@ -40,7 +39,7 @@ return {
 		-- This path is relative to the workspace folder (root dir) of the server instance.
 		nodePath = "",
 		-- use the workspace folder location or the file location (if no workspace folder is open) as the working directory
-		workingDirectory = { mode = "auto" },
+		workingDirectory = { mode = "location" },
 		codeAction = {
 			disableRuleComment = {
 				enable = true,
