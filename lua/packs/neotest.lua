@@ -24,6 +24,9 @@ neotest.setup({
 })
 
 vim.keymap.set("n", "<leader>tr", ":Neotest run<cr>", { desc = "Run test" })
+vim.keymap.set("n", "<leader>td", function()
+	neotest.run.run({ strategy = "dap" })
+end, { desc = "Debug run test" })
 vim.keymap.set("n", "<leader>to", ":Neotest output<cr>", { desc = "Show test output" })
 vim.keymap.set("n", "<leader>ts", ":Neotest summary<cr>", { desc = "Summarize test" })
 vim.keymap.set("n", "<leader>ta", function()

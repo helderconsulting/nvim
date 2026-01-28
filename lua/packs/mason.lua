@@ -14,6 +14,7 @@ require("mason").setup({
 		"vtsls",
 		"lua_ls",
 		"lua-language-server",
+		"yaml-language-server",
 		"rust_analyzer",
 		"js-debug-adapter",
 		"eslint_d",
@@ -24,4 +25,4 @@ require("mason").setup({
 })
 vim.keymap.set("n", "<leader>l", function()
 	require("mason.ui").open()
-end, { desc = "Open language toolS" })
+end, { desc = "Open language tools" })

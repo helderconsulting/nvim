@@ -6,6 +6,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		javascript = { "prettier", stop_after_first = true },
 		typescript = { "prettier", stop_after_first = true },
+		yaml = { "prettier", stop_after_first = true },
 	},
 	format_on_save = {
 		timeout_ms = 500,

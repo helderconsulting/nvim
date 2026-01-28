@@ -22,4 +22,5 @@ vim.lsp.enable({
 	"rust_ls",
 	"typescript_ls",
 	"eslint_ls",
+	"yaml_ls",
 })
