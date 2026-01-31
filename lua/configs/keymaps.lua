@@ -6,8 +6,6 @@ vim.keymap.set({ "n" }, "<C-space>a", vim.lsp.buf.code_action, { desc = "show co
 vim.keymap.set("n", "<leader>q", ":q<cr>")
 vim.keymap.set("n", "<leader>W", ":wa<cr>", { desc = "save all" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "save file" })
-
-vim.keymap.set("n", "<leader>r", ":OverseerRun<cr>", { desc = "run task" })
 vim.keymap.set("n", "<A-(>", ":bp<cr>")
 vim.keymap.set("n", "<A-)>", ":bn<cr>")
 vim.keymap.set("n", "<A-d>", ":bd<cr>")

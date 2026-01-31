@@ -34,7 +34,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		require("packs.dap")
 		require("packs.git")
 		require("packs.neotest")
-		require("packs.overseer")
 	end,
 })
 
