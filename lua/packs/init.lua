@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		require("packs.mason")
 		require("packs.whichkey")
 		require("packs.dap")
+		require("packs.rustacean")
 		require("packs.git")
 		require("packs.neotest")
 	end,

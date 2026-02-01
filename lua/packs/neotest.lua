@@ -6,6 +6,7 @@ vim.pack.add({
 local neotest = require("neotest")
 neotest.setup({
 	adapters = {
+		require("rustaceanvim.neotest"),
 		require("neotest-jest")({
 			jestConfigFile = function(file)
 				if file:find("/packages/") or file:find("/libs/") then

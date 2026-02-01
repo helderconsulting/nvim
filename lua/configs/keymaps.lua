@@ -3,6 +3,7 @@ vim.keymap.set({ "n" }, "<C-space>i", vim.lsp.buf.hover, { desc = "more info" })
 vim.keymap.set({ "n" }, "<C-space>d", vim.diagnostic.open_float, { desc = "show diagnostics" })
 vim.keymap.set({ "n" }, "<C-space>r", vim.lsp.buf.rename, { desc = "rename variable" })
 vim.keymap.set({ "n" }, "<C-space>a", vim.lsp.buf.code_action, { desc = "show code actions" })
+
 vim.keymap.set("n", "<leader>q", ":q<cr>")
 vim.keymap.set("n", "<leader>W", ":wa<cr>", { desc = "save all" })
 vim.keymap.set("n", "<leader>w", ":w<cr>", { desc = "save file" })
