@@ -10,4 +10,5 @@ vim.keymap.set("n", "<A-(>", ":bp<cr>")
 vim.keymap.set("n", "<A-)>", ":bn<cr>")
 vim.keymap.set("n", "<A-d>", ":bd<cr>")
 vim.keymap.set("n", "<A-D>", ":bd!<cr>")
+
 vim.keymap.set("n", "<leader>p", ":lua =vim.pack.get()<cr>", { desc = "print all installed plugins" })
