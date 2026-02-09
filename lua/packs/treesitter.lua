@@ -35,6 +35,7 @@ ts.install({
 	"dockerfile",
 	"editorconfig",
 	"gitcommit",
+	"gitdiff",
 })
 vim.treesitter.language.register("glimmer", "handlebars")
 
