@@ -6,6 +6,8 @@ local lint = require("lint")
 
 lint.linters_by_ft = {
 	lua = { "selene" },
+	handlebars = { "djlint" },
+	moustache = { "djlint" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

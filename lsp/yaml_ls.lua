@@ -8,9 +8,20 @@ return {
 		redhat = { telemetry = { enabled = false } },
 		-- formatting disabled by default in yaml-language-server; enable it
 		yaml = {
-			format = { enable = true, schemas = {
-				["https://spec.openapis.org/oas/3.1/schema/2022-10-07"] = "/*",
-			} },
+			format = { enable = true },
+			schemaStore = {
+				enable = true,
+				url = "https://www.schemastore.org/api/json/catalog.json",
+			},
+			schemas = {
+				["https://spec.openapis.org/oas/3.1/schema/2022-10-07"] = {
+					"openapi*.yml",
+					"openapi*.yaml",
+					"**/openapi/*.yml",
+					"**/openapi/*.yaml",
+					"**/openapi/*.yaml",
+				},
+			},
 		},
 	},
 	on_init = function(client)

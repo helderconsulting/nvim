@@ -12,6 +12,11 @@ require("blink.cmp").setup({
 	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
+		providers = {
+			snippets = {
+				score_offset = 5,
+			},
+		},
 	},
 	providers = {
 		dadbod = { name = "DadBod", module = "vim_dadbod_completion.blink" },

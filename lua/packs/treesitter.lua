@@ -22,6 +22,7 @@ local ts = require("nvim-treesitter")
 ts.install({
 	"lua",
 	"luadoc",
+	"glimmer",
 	"javascript",
 	"comment",
 	"query",
@@ -33,7 +34,10 @@ ts.install({
 	"rust",
 	"dockerfile",
 	"editorconfig",
+	"gitcommit",
 })
+vim.treesitter.language.register("glimmer", "handlebars")
+
 require("nvim-treesitter-textobjects").setup({
 	select = {
 		lookahead = true,
@@ -44,7 +48,6 @@ require("nvim-treesitter-textobjects").setup({
 })
 
 local ts_select = require("nvim-treesitter-textobjects.select")
-
 vim.keymap.set({ "x", "o" }, "a=", function()
 	ts_select.select_textobject("@assignment.outer", "textobjects")
 end, { desc = "Select outer part of an assignment" })
@@ -71,11 +74,11 @@ end, { desc = "Select inner part of an function" })
 
 vim.keymap.set({ "x", "o" }, "ac", function()
 	ts_select.select_textobject("@class.outer", "textobjects")
-end, { desc = "Select outer part of an function" })
+end, { desc = "Select outer part of an class" })
 
 vim.keymap.set({ "x", "o" }, "ic", function()
 	ts_select.select_textobject("@class.inner", "textobjects")
-end, { desc = "Select inner part of an function" })
+end, { desc = "Select inner part of an class" })
 
 vim.keymap.set({ "x", "o" }, "ap", function()
 	ts_select.select_textobject("@parameter.outer", "textobjects")
@@ -109,8 +112,15 @@ vim.keymap.set({ "x", "o" }, "ir", function()
 	ts_select.select_textobject("@return.inner", "textobjects")
 end, { desc = "Select inner part of an conditional" })
 
-local ts_move = require("nvim-treesitter-textobjects.move")
+vim.keymap.set({ "x", "o" }, "a/", function()
+	ts_select.select_textobject("@comment.outer", "textobjects")
+end, { desc = "Select outer comment" })
 
+vim.keymap.set({ "x", "o" }, "i/", function()
+	ts_select.select_textobject("@comment.inner", "textobjects")
+end, { desc = "Select inner comment" })
+
+local ts_move = require("nvim-treesitter-textobjects.move")
 vim.keymap.set({ "n", "x", "o" }, "]f", function()
 	ts_move.goto_next_start("@function.outer")
 end, { desc = "Next function call start" })
@@ -140,6 +150,10 @@ vim.keymap.set({ "n", "x", "o" }, "]L", function()
 	ts_move.goto_next_end("@loop.outer")
 end, { desc = "Next loop end" })
 
+vim.keymap.set({ "n", "x", "o" }, "]/", function()
+	ts_move.goto_next_start("@comment.outer")
+end, { desc = "Next comment start" })
+
 vim.keymap.set({ "n", "x", "o" }, "[f", function()
 	ts_move.goto_previous_start("@function.outer")
 end, { desc = "Prev method/function def start" })
@@ -166,12 +180,19 @@ vim.keymap.set({ "n", "x", "o" }, "[L", function()
 	ts_move.goto_previous_end("@loop.outer")
 end, { desc = "Prev loop end" })
 
+vim.keymap.set({ "n", "x", "o" }, "[/", function()
+	ts_move.goto_previous_start("@comment.outer")
+end, { desc = "Prev comment start" })
+
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
-	callback = function()
-		vim.treesitter.start()
-		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-		vim.wo[0][0].foldmethod = "expr"
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	pattern = "*",
+	callback = function(args)
+		local ok = pcall(vim.treesitter.start, args.buf)
+		if ok then
+			vim.wo[0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.wo[0].foldmethod = "expr"
+			vim.wo[0].foldlevel = 99
+			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end
 	end,
 })

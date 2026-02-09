@@ -15,6 +15,7 @@ require("mason").setup({
 		"lua_ls",
 		"lua-language-server",
 		"yaml-language-server",
+		"ember-language-server",
 		"rust_analyzer",
 		"js-debug-adapter",
 		"eslint_d",

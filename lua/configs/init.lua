@@ -1,3 +1,5 @@
 require("configs.settings")
 require("configs.keymaps")
 require("configs.lsp")
+require("configs.pack")
+require("configs.projects")

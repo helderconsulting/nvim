@@ -14,7 +14,14 @@ if ok_lualine then
 			lualine_b = { {
 				"branch",
 			} },
-			lualine_c = {
+			lualine_x = {
+				{
+					"diagnostics",
+				},
+			},
+		},
+		tabline = {
+			lualine_a = {
 				{
 					"buffers",
 					hide_filename_extension = true,
@@ -22,11 +29,6 @@ if ok_lualine then
 					symbols = {
 						modified = " ●",
 					},
-				},
-			},
-			lualine_x = {
-				{
-					"diagnostics",
 				},
 			},
 		},

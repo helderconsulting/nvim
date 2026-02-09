@@ -4,9 +4,16 @@ vim.pack.add({
 
 local fzf = require("fzf-lua")
 fzf.setup({
-	file_ignore_patterns = {
-		"node_modules/",
-		"dist/",
+  files = {
+    fd_opts = "--type f --hidden --follow --exclude .git",
+    rg_opts = "--files --hidden --follow -g '!.git'",
+  },
+  grep = {
+    rg_opts = "--hidden --follow --smart-case --no-heading --line-number --column --color=always -g '!.git' -g '!node_modules/*' -g '!dist/*' -g '!.next/*' -g '!build/*' -g '!target/*' -g '!*.lock'",
+  },
+  file_ignore_patterns = {
+    "node_modules/",
+    "dist/",
 		".next/",
 		".git/",
 		".gitlab/",
@@ -15,12 +22,24 @@ fzf.setup({
 		"package-lock.json",
 		"pnpm-lock.yaml",
 		"yarn.lock",
-	},
+  },
 	winopts = {
 		height = 0.40,
 		width = 1.00,
 		row = 1.00,
 		border = "none",
+		on_create = function(e)
+			vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost" }, {
+				buffer = e.bufnr,
+				once = true,
+				callback = function()
+					local ok, fzf = pcall(require, "fzf-lua")
+					if ok then
+						fzf.hide()
+					end
+				end,
+			})
+		end,
 		preview = {
 
 			border = "none",
@@ -41,6 +60,16 @@ fzf.setup({
 	defaults = {
 		git_icons = false,
 		file_icons = false,
+	},
+})
+fzf.register_ui_select({
+	-- Use fzf-lua UI for vim.ui.select (e.g., LSP code actions)
+	winopts = {
+		height = 0.30,
+		width = 0.60,
+		row = 0.40,
+		border = "none",
+		preview = { hidden = "hidden" },
 	},
 })
 vim.keymap.set("n", "<leader>f", fzf.files, { desc = "search across all files" })

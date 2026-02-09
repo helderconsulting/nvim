@@ -8,6 +8,8 @@ require("conform").setup({
 		typescript = { "prettier", stop_after_first = true },
 		json = { "prettier", stop_after_first = true },
 		yaml = { "prettier", stop_after_first = true },
+		handlebars = { "djlint" },
+		moustache = { "djlint" },
 	},
 	format_on_save = {
 		timeout_ms = 500,

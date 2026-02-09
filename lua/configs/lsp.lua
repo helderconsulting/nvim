@@ -14,6 +14,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				})
 			end
 			vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "go to definition", buffer = args.buf })
+			vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, { desc = "go to implementation", buffer = args.buf })
+			vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, { desc = "go to references", buffer = args.buf })
+			vim.keymap.set("n", "<leader>T", vim.lsp.buf.type_definition, { desc = "go to type definition", buffer = args.buf })
 		end
 	end,
 })
@@ -23,4 +26,5 @@ vim.lsp.enable({
 	"typescript_ls",
 	"eslint_ls",
 	"yaml_ls",
+	"ember_ls",
 })
