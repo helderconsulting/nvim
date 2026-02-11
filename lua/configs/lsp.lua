@@ -33,5 +33,4 @@ vim.lsp.enable({
 	"eslint_ls",
 	"yaml_ls",
 	"ember_ls",
-	"commit_ls",
 })
