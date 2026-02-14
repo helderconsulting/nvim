@@ -36,6 +36,7 @@ ts.install({
 	"editorconfig",
 	"gitcommit",
 	"gitdiff",
+	"http",
 })
 vim.treesitter.language.register("glimmer", "handlebars")
 

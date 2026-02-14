@@ -3,6 +3,18 @@ vim.pack.add({
 })
 
 require("blink.cmp").setup({
+	signature = {
+		enabled = true,
+		trigger = {
+			enabled = true,
+			show_on_keyword = false,
+			blocked_trigger_characters = {},
+			blocked_retrigger_characters = {},
+			show_on_trigger_character = true,
+			show_on_insert = true,
+			show_on_insert_on_trigger_character = true,
+		},
+	},
 	keymap = { preset = "super-tab" },
 	appearance = {
 		use_nvim_cmp_as_default = false,
@@ -12,11 +24,6 @@ require("blink.cmp").setup({
 	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
-		providers = {
-			snippets = {
-				score_offset = 5,
-			},
-		},
 	},
 	providers = {
 		dadbod = { name = "DadBod", module = "vim_dadbod_completion.blink" },

@@ -30,30 +30,18 @@
     "description": "Union type"
   },
   "TS: interface": {
-    "prefix": "iface",
-    "body": [
-      "interface ${1:Name} {",
-      "\t${2:prop}: ${3:type};",
-      "}"
-    ],
+    "prefix": "interface",
+    "body": ["interface ${1:Name} {", "\t${2:prop}: ${3:type};", "}"],
     "description": "Interface"
   },
   "TS: interface generic": {
     "prefix": "interface_generic",
-    "body": [
-      "interface ${1:Name}<${2:T}> {",
-      "\t${3:prop}: ${4:T};",
-      "}"
-    ],
+    "body": ["interface ${1:Name}<${2:T}> {", "\t${3:prop}: ${4:T};", "}"],
     "description": "Generic interface"
   },
   "TS: enum": {
     "prefix": "enum",
-    "body": [
-      "enum ${1:Name} {",
-      "\t${2:Member} = '${3:value}',",
-      "}"
-    ],
+    "body": ["enum ${1:Name} {", "\t${2:Member} = '${3:value}',", "}"],
     "description": "Enum"
   },
   "TS: Promise": {
@@ -147,25 +135,19 @@
     "description": "Utility type Awaited"
   },
   "TS: arrow function": {
-    "prefix": [
-      "fn"
-    ],
-    "body": "const ${1:name} = (${2:args}): ${3:Return} => {\n\t${4}\n};",
+    "prefix": ["fn"],
+    "body": "const ${1:name} = (${2:args}) => {\n\t${3}\n};",
     "description": "Arrow function"
   },
   "TS: arrow function async": {
-    "prefix": [
-      "fn_async"
-    ],
-    "body": "const ${1:name} = async (${2:args}): Promise<${3:Return}> => {\n\t${4}\n};",
+    "prefix": ["fn_async"],
+    "body": "const ${1:name} = async (${2:args}) => {\n\t${3}\n};",
     "description": "Async arrow function"
   },
-  "TS: arrow function (implicit return)": {
-    "prefix": [
-      "afnr"
-    ],
-    "body": "const ${1:name} = (${2:args}): ${3:Return} => ${4:expression};",
-    "description": "Arrow function implicit return"
+  "TS: arrow function inline": {
+    "prefix": ["fn_inline"],
+    "body": "(${1:args}) => {${\n\t${2}\n}};",
+    "description": "Arrow function inline"
   },
   "TS: class": {
     "prefix": "class",
@@ -184,38 +166,22 @@
   },
   "TS: constructor": {
     "prefix": "ctor",
-    "body": [
-      "constructor(${1:args}) {",
-      "\t${2}",
-      "}"
-    ],
+    "body": ["constructor(${1:args}) {", "\t${2}", "}"],
     "description": "Constructor"
   },
   "TS: method": {
     "prefix": "method",
-    "body": [
-      "${1:name}(${2:args}): ${3:void} {",
-      "\t${4}",
-      "}"
-    ],
+    "body": ["${1:name}(${2:args}): ${3:void} {", "\t${4}", "}"],
     "description": "Class method"
   },
   "TS: for...of": {
     "prefix": "forof",
-    "body": [
-      "for (const ${1:item} of ${2:iterable}) {",
-      "\t${3}",
-      "}"
-    ],
+    "body": ["for (const ${1:item} of ${2:iterable}) {", "\t${3}", "}"],
     "description": "for...of loop"
   },
   "TS: for...in": {
     "prefix": "forin",
-    "body": [
-      "for (const ${1:key} in ${2:object}) {",
-      "\t${3}",
-      "}"
-    ],
+    "body": ["for (const ${1:key} in ${2:object}) {", "\t${3}", "}"],
     "description": "for...in loop"
   },
   "TS: for loop": {
@@ -229,20 +195,16 @@
   },
   "TS: while loop": {
     "prefix": "while",
-    "body": [
-      "while (${1:condition}) {",
-      "\t${2}",
-      "}"
-    ],
+    "body": ["while (${1:condition}) {", "\t${2}", "}"],
     "description": "While loop"
   },
   "Node: export named": {
-    "prefix": "exp",
+    "prefix": "export",
     "body": "export { ${1:name} };",
     "description": "Named export"
   },
   "Node: export default": {
-    "prefix": "expd",
+    "prefix": "export_default",
     "body": "export default ${1:name};",
     "description": "Default export"
   },
@@ -290,7 +252,7 @@
     "description": "Switch statement"
   },
   "TS: try/catch unknown": {
-    "prefix": "tryc",
+    "prefix": "try_catch",
     "body": [
       "try {",
       "\t${1}",
@@ -320,7 +282,7 @@
     "description": "Async try/catch"
   },
   "TS: invariant": {
-    "prefix": "inv",
+    "prefix": "invariant",
     "body": [
       "if (!${1:condition}) {",
       "\tthrow new Error('${2:message}');",

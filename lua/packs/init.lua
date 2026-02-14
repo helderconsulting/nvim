@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 		require("packs.undotree")
 		require("packs.conform")
 		require("packs.db")
+		require("packs.paste")
 	end,
 })
 
@@ -35,6 +36,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		require("packs.rustacean")
 		require("packs.git")
 		require("packs.neotest")
+		require("packs.paste")
 	end,
 })
 
